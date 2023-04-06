@@ -1,22 +1,22 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import type { ChangeEvent, ReactNode } from 'react';
+import { ChangeEvent, ReactNode, useTransition } from 'react';
 import type { User } from '../utils';
 
 type BadKeys = (keyof User)[];
 
 export function Form({ badKeys = [] }: { badKeys?: BadKeys }) {
-	console.log({ badKeys });
-
+	const [isPending, startTransition] = useTransition();
 	const router = useRouter();
 
 	async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
 		event.preventDefault();
 		const form = event.target;
 		const formData = new FormData(form);
-
-		router.push('/signup/account?' + new URLSearchParams(formData).toString());
+		startTransition(() => {
+			router.push('/signup/account?' + new URLSearchParams(formData).toString());
+		});
 	}
 
 	return (
@@ -45,7 +45,9 @@ export function Form({ badKeys = [] }: { badKeys?: BadKeys }) {
 				name="name"
 			/>
 			{badKeys.includes('name') ? <FormError>Name is required.</FormError> : null}
-			<button className="rounded-md px-4 py-2 bg-purple-600 text-white">Next</button>
+			<button className="rounded-md px-4 py-2 bg-purple-600 text-white">
+				Next {isPending ? '...' : null}
+			</button>
 		</form>
 	);
 }
