@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import { SignUp } from '@clerk/nextjs/app-beta/client';
 
 export default function Signup() {
-	redirect('/signup/account');
+	return <SignUp path="/signup" signInUrl="signin" redirectUrl="/signup/confirm" />;
 }
