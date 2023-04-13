@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@planetscale/database': ^1.7.0
   '@types/node': 18.15.11
   '@types/react': 18.0.33
   '@types/react-dom': 18.0.11
@@ -17,6 +18,7 @@ specifiers:
   zod: ^3.21.4
 
 dependencies:
+  '@planetscale/database': 1.7.0
   '@types/node': 18.15.11
   '@types/react': 18.0.33
   '@types/react-dom': 18.0.11
@@ -255,6 +257,11 @@ packages:
       picocolors: 1.0.0
       tiny-glob: 0.2.9
       tslib: 2.5.0
+    dev: false
+
+  /@planetscale/database/1.7.0:
+    resolution: {integrity: sha512-lWR6biXChUyQnxsT4RT1CIeR3ZJvwTQXiQ+158MnY3VjLwjHEGakDzdH9kwUGPk6CHvu6UeqRXp1DgUOVHJFTw==}
+    engines: {node: '>=16'}
     dev: false
 
   /@rushstack/eslint-patch/1.2.0:
