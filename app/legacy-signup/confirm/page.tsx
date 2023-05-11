@@ -15,7 +15,6 @@ export default async function SignupConfirm() {
 	}
 
 	const [user] = res.rows;
-	console.log({ user });
 
 	return <h1>Confirmed! Welcome to is-even, {user.name} 👋</h1>;
 }
