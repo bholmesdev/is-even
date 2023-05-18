@@ -1,6 +1,7 @@
 import { Atkinson_Hyperlegible } from 'next/font/google';
 import './globals.css';
-import { ClerkProvider } from '@clerk/nextjs/app-beta';
+import '@uploadthing/react/styles.css';
+import { ClerkProvider, currentUser } from '@clerk/nextjs/app-beta';
 
 export const metadata = {
 	title: 'Create Next App',
@@ -15,11 +16,25 @@ const sansFont = Atkinson_Hyperlegible({
 	display: 'auto'
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+	const user = await currentUser();
 	return (
 		<ClerkProvider>
 			<html lang="en" className={sansFont.variable}>
-				<body className={sansFont.className}>{children}</body>
+				<body className={sansFont.className}>
+					<nav>
+						{user ? (
+							<a href="/profile">
+								{typeof user.publicMetadata.profilePicSrc === 'string' ? (
+									<img src={user.publicMetadata.profilePicSrc} alt={user.firstName} />
+								) : (
+									user?.firstName
+								)}
+							</a>
+						) : null}
+					</nav>
+					{children}
+				</body>
 			</html>
 		</ClerkProvider>
 	);
