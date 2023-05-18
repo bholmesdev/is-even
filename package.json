@@ -11,20 +11,20 @@
     "format:fix": "prettier --write . --ignore-path .gitignore !package.json !pnpm-lock.yaml"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.16.2",
+    "@clerk/nextjs": "^4.18.2",
     "@planetscale/database": "^1.7.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
-    "@uploadthing/react": "^3.0.1",
+    "@uploadthing/react": "^3.0.4",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
-    "next": "13.4.1",
+    "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
     "typescript": "5.0.3",
-    "uploadthing": "^3.0.1",
+    "uploadthing": "^3.0.4",
     "zod": "^3.21.4"
   },
   "devDependencies": {
