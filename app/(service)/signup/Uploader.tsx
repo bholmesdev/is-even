@@ -1,7 +1,7 @@
 'use client';
 
 import { UploadButton } from '@uploadthing/react';
-import { type ProfilePicRouter } from '~/app/api/uploadthing/core';
+import { type ProfilePicRouter } from '../api/uploadthing/core';
 import React from 'react';
 import { uploadProfilePic } from './upload-action';
 

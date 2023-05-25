@@ -1,4 +1,3 @@
-import { auth } from '@clerk/nextjs/app-beta';
 import { FileRouter, createUploadthing } from 'uploadthing/next';
 
 const f = createUploadthing();

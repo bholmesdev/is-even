@@ -26,7 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 						{user ? (
 							<a href="/profile">
 								{typeof user.publicMetadata.profilePicSrc === 'string' ? (
-									<img src={user.publicMetadata.profilePicSrc} alt={user.firstName} />
+									<img src={user.publicMetadata.profilePicSrc} alt={user.firstName ?? ''} />
 								) : (
 									user?.firstName
 								)}
