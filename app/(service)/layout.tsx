@@ -1,7 +1,8 @@
 import { Atkinson_Hyperlegible } from 'next/font/google';
-import './globals.css';
+import '../globals.css';
 import '@uploadthing/react/styles.css';
-import { ClerkProvider, currentUser } from '@clerk/nextjs/app-beta';
+import { ClerkProvider, currentUser, SignOutButton } from '@clerk/nextjs';
+import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 
 export const metadata = {
 	title: 'Create Next App',
@@ -22,16 +23,27 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 		<ClerkProvider>
 			<html lang="en" className={sansFont.variable}>
 				<body className={sansFont.className}>
-					<nav>
-						{user ? (
-							<a href="/profile">
-								{typeof user.publicMetadata.profilePicSrc === 'string' ? (
-									<img src={user.publicMetadata.profilePicSrc} alt={user.firstName ?? ''} />
-								) : (
-									user?.firstName
-								)}
-							</a>
-						) : null}
+					<nav className="px-4 py-2 flex border-b-2 border-b-slate-100">
+						{!user ? (
+							<a href="/sign-in">Sign in</a>
+						) : (
+							<Popover>
+								<PopoverTrigger className="ml-auto">
+									{typeof user.publicMetadata.profilePicSrc === 'string' ? (
+										<img
+											className="w-[3rem] rounded-full"
+											src={user.publicMetadata.profilePicSrc}
+											alt={user.firstName ?? ''}
+										/>
+									) : (
+										user.firstName
+									)}
+								</PopoverTrigger>
+								<PopoverContent className="bg-white rounded-md">
+									<SignOutButton />
+								</PopoverContent>
+							</Popover>
+						)}
 					</nav>
 					{children}
 				</body>
