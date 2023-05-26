@@ -1,4 +1,4 @@
-import { SignUp, auth, currentUser } from '@clerk/nextjs/app-beta';
+import { SignUp, auth, currentUser } from '@clerk/nextjs';
 import { Uploader } from './Uploader';
 
 export default async function Page() {

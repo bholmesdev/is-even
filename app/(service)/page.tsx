@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/app-beta';
+import { auth } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
 // TODO: server action
