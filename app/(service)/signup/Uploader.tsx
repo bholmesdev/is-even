@@ -3,31 +3,24 @@
 import { UploadButton } from '@uploadthing/react';
 import { type ProfilePicRouter } from '../api/uploadthing/core';
 import React from 'react';
-import { uploadProfilePic } from './upload-action';
 
-export function Uploader({ userId }: { userId: string }) {
+export function Uploader() {
 	const [image, setImage] = React.useState<string | undefined>(undefined);
 	return (
 		<main className="">
 			<UploadButton<ProfilePicRouter>
 				endpoint="imageUploader"
+				onUploadError={(err) => {
+					console.log({ err });
+				}}
 				onClientUploadComplete={(res) => {
 					setImage(res?.[0]?.fileUrl);
 				}}
 			/>
 			{image ? (
 				<>
-					<h2>Preview</h2>
+					<h2>Picture updated!</h2>
 					<img src={image} alt="User uploaded image" />
-					<button
-						onClick={async () => {
-							const res = await uploadProfilePic({ src: image, userId });
-							console.log({ res });
-						}}
-						type="submit"
-					>
-						Confirm
-					</button>
 				</>
 			) : null}
 		</main>
