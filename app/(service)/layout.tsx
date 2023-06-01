@@ -25,14 +25,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 				<body className={sansFont.className}>
 					<nav className="px-4 py-2 flex border-b-2 border-b-slate-100">
 						{!user ? (
-							<a href="/sign-in">Sign in</a>
+							<a href="/signin">Sign in</a>
 						) : (
 							<Popover>
 								<PopoverTrigger className="ml-auto">
 									{typeof user.publicMetadata.profilePicSrc === 'string' ? (
 										<img
 											className="w-[3rem] rounded-full"
-											src={user.publicMetadata.profilePicSrc}
+											src={user.profileImageUrl}
 											alt={user.firstName ?? ''}
 										/>
 									) : (
