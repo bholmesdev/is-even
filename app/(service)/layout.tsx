@@ -1,6 +1,5 @@
 import { Atkinson_Hyperlegible } from 'next/font/google';
 import '../globals.css';
-import '@uploadthing/react/styles.css';
 import { ClerkProvider, currentUser, SignOutButton } from '@clerk/nextjs';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 
