@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# CRABS
+target/
+
 # production
 /build
 
